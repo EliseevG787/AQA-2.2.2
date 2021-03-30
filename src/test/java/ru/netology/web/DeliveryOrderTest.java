@@ -1,5 +1,6 @@
 package ru.netology.web;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
@@ -19,9 +20,13 @@ class DeliveryOrderTest {
     int rest = 0;
     String str = "";
 
+    @BeforeEach
+    void Setup() {
+        open("http://localhost:9999");
+    }
+
     @Test
     void shouldFillingFieldCity() {
-        open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Мо");
         $$(".menu-item__control").find(exactText("Москва")).click();
         $("[data-test-id='date'] .input__control").doubleClick().sendKeys(format.format(newDate));
@@ -34,7 +39,6 @@ class DeliveryOrderTest {
 
     @Test
     void shouldFillingFieldDate() {
-        open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Мо");
         $$(".menu-item__control").find(exactText("Москва")).click();
         $("button.icon-button").click();
