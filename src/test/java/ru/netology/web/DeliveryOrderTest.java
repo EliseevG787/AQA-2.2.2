@@ -21,7 +21,7 @@ class DeliveryOrderTest {
     String str = "";
 
     @BeforeEach
-    void Setup() {
+    void setUp() {
         open("http://localhost:9999");
     }
 
